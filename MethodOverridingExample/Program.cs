@@ -5,20 +5,22 @@ using System.Text;
 using System.Threading.Tasks;
 
 namespace MethodOverridingExample
-{
-    class BaseClass
-        {
-        public  virtual void  Show()
-        {
-            Console.WriteLine("Base class");
-        }
-
-        }
-    class Derived:BaseClass
+{ 
+    
+    class One
     {
-        public override  void Show()
+       
+        public virtual int Sum ( int a, int b)
+            {
+            return( a + b);
+            }
+    }
+
+    internal class  Two: One
+    {
+        public override int Sum(int a, int b)
         {
-            Console.WriteLine("Derived class");
+             return (a + b);
         }
     }
 
@@ -26,15 +28,12 @@ namespace MethodOverridingExample
     {
         static void Main(string[] args)
         {
-            BaseClass obj;
-            obj = new BaseClass();
-            obj.Show();
-            obj = new Derived();
-            obj.Show();
-            //BaseClass obj = new BaseClass();
-            //obj.Show();
-            //BaseClass obj = new Derived();
-            Console.ReadKey();
+            One obj = new One();
+            Console.WriteLine("Sum of two Numbers=" + obj.Sum(3, 4));
+            obj = new Two();
+            Console.WriteLine("Second sum of two numbers=" + obj.Sum(5,10));
+            Console.ReadKey();  
         }
     }
-}
+    }
+
